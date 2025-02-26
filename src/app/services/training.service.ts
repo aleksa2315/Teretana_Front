@@ -7,7 +7,7 @@ import { Training } from '../models/training.model';
   providedIn: 'root'
 })
 export class TrainingService {
-  private baseUrl = 'http://localhost:8080/api/trainings';
+  private baseUrl = 'https://teretana-back.onrender.com/api/trainings';
 
   constructor(private http: HttpClient) {}
 
