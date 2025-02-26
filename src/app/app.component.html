@@ -1,0 +1,78 @@
+<div class="flex min-h-screen">
+
+  <!-- Sidebar -->
+  <nav class="w-64 bg-gray-800 text-white p-4">
+    <h2 class="text-xl font-semibold mb-6 text-center">Navigation</h2>
+    <div class="flex flex-col gap-4">
+      <a
+        *ngIf="isLoggedIn"
+        routerLink="/users"
+        routerLinkActive="bg-gray-700"
+        class="block px-4 py-2 rounded hover:bg-gray-600"
+      >
+        Users
+      </a>
+      <a
+        *ngIf="isLoggedIn"
+        routerLink="/orders"
+        routerLinkActive="bg-gray-700"
+        class="block px-4 py-2 rounded hover:bg-gray-600"
+      >
+        Orders
+      </a>
+      <a
+        *ngIf="isLoggedIn"
+        routerLink="/error-history"
+        routerLinkActive="bg-gray-700"
+        class="block px-4 py-2 rounded hover:bg-gray-600"
+      >
+        Error History
+      </a>
+      <a
+        *ngIf="isLoggedIn"
+        routerLink="/meal-plan"
+        routerLinkActive="bg-gray-700"
+        class="block px-4 py-2 rounded hover:bg-gray-600"
+      >
+        Meal Plans
+      </a>
+      <a
+        *ngIf="isLoggedIn"
+        routerLink="/dish"
+        routerLinkActive="bg-gray-700"
+        class="block px-4 py-2 rounded hover:bg-gray-600"
+      >
+        Dishes
+      </a>
+      <a
+        *ngIf="isLoggedIn"
+        routerLink="/exercise"
+        routerLinkActive="bg-gray-700"
+        class="block px-4 py-2 rounded hover:bg-gray-600"
+      >
+        Exercises
+      </a>
+      <a
+        *ngIf="isLoggedIn"
+        routerLink="/training"
+        routerLinkActive="bg-gray-700"
+        class="block px-4 py-2 rounded hover:bg-gray-600"
+      >
+        Trainings
+      </a>
+      <a
+        *ngIf="isLoggedIn"
+        (click)="logout()"
+        class="block px-4 py-2 rounded hover:bg-gray-600 cursor-pointer"
+      >
+        Logout
+      </a>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="flex-grow p-6 bg-gray-100">
+    <router-outlet></router-outlet>
+  </main>
+
+</div>

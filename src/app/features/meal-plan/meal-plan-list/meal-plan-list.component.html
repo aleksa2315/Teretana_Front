@@ -1,0 +1,28 @@
+<div class="container mx-auto py-8">
+  <h1 class="text-3xl font-bold mb-4">Meal Plans</h1>
+  <a routerLink="/meal-plan/create" class="bg-blue-500 text-white px-4 py-2 rounded mb-4 inline-block">Add Meal Plan</a>
+
+  <table class="w-full table-auto border-collapse border border-gray-300">
+    <thead>
+    <tr class="bg-gray-100">
+      <th class="border border-gray-300 px-4 py-2">Name</th>
+      <th class="border border-gray-300 px-4 py-2">Dishes</th>
+      <th class="border border-gray-300 px-4 py-2">Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let mealPlan of mealPlans" class="hover:bg-gray-50">
+      <td class="border border-gray-300 px-4 py-2">{{ mealPlan.name }}</td>
+      <td class="border border-gray-300 px-4 py-2">
+        <ul class="list-disc list-inside">
+          <li *ngFor="let dish of mealPlan.dishes">{{ dish.name }}</li>
+        </ul>
+      </td>
+      <td class="border border-gray-300 px-4 py-2 flex gap-2">
+        <a [routerLink]="['/meal-plan', mealPlan.id]" class="bg-yellow-500 text-white px-2 py-1 rounded">Edit</a>
+        <button (click)="deleteMealPlan(mealPlan.id!)" class="bg-red-500 text-white px-2 py-1 rounded">Delete</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

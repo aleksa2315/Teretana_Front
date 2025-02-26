@@ -1,0 +1,59 @@
+<div class="container mx-auto py-8">
+  <h1 class="text-3xl font-bold mb-4" *ngIf="!isEditMode">Dodaj Novo Jelo</h1>
+  <h1 class="text-3xl font-bold mb-4" *ngIf="isEditMode">Izmeni Jelo</h1>
+
+  <form (ngSubmit)="saveDish()" class="space-y-4">
+    <!-- Naziv Jela -->
+    <div>
+      <label for="name" class="block text-sm font-medium mb-2">Naziv Jela</label>
+      <input
+        type="text"
+        id="name"
+        [(ngModel)]="dish.name"
+        name="name"
+        class="w-full border border-gray-300 rounded px-3 py-2"
+        required>
+    </div>
+
+    <!-- Pretraga Sastojaka -->
+    <div class="mb-4">
+      <input
+        type="text"
+        [(ngModel)]="searchTerm"
+        (input)="searchIngredients()"
+        placeholder="Pretraži sastojke..."
+        class="w-full border border-gray-300 rounded px-3 py-2"
+        name="searchTerm">
+    </div>
+
+    <!-- Paginacija -->
+    <div class="flex gap-4 mb-4">
+      <button type="button" (click)="goToPage(currentPage - 1)" class="bg-gray-500 text-white px-4 py-2 rounded" [disabled]="currentPage === 0">
+        Prethodna
+      </button>
+      <span>Strana {{currentPage + 1}}</span>
+      <button type="button" (click)="goToPage(currentPage + 1)" class="bg-gray-500 text-white px-4 py-2 rounded">
+        Sledeća
+      </button>
+    </div>
+
+    <!-- Lista Sastojaka -->
+    <h2 class="text-xl font-semibold mb-2">Dostupni Sastojci</h2>
+    <div *ngFor="let ingredient of availableIngredients" class="flex items-center mb-2">
+      <label class="flex-1">{{ ingredient.name }}</label>
+      <input
+        type="number"
+        [(ngModel)]="ingredientWeights[ingredient.id]"
+        name="weight{{ingredient.id}}"
+        placeholder="Gramaža (g)"
+        class="w-32 border border-gray-300 rounded px-3 py-1"
+        min="0">
+    </div>
+
+    <!-- Dugmad -->
+    <div class="flex gap-4 mt-4">
+      <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded">Sačuvaj</button>
+      <a routerLink="/dish" class="bg-gray-500 text-white px-4 py-2 rounded">Nazad</a>
+    </div>
+  </form>
+</div>

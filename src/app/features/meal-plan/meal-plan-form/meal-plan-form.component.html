@@ -1,0 +1,35 @@
+<div class="container mx-auto py-8">
+  <h1 class="text-3xl font-bold mb-4" *ngIf="!isEditMode">Add New Meal Plan</h1>
+  <h1 class="text-3xl font-bold mb-4" *ngIf="isEditMode">Edit Meal Plan</h1>
+
+  <form (ngSubmit)="saveMealPlan()" class="space-y-4">
+    <div>
+      <label for="name" class="block text-sm font-medium mb-2">Meal Plan Name</label>
+      <input
+        type="text"
+        id="name"
+        [(ngModel)]="mealPlan.name"
+        name="name"
+        class="w-full border border-gray-300 rounded px-3 py-2"
+        required>
+    </div>
+
+    <div>
+      <label class="block text-sm font-medium mb-2">Select Dishes</label>
+      <div class="flex flex-wrap gap-2">
+        <div *ngFor="let dish of allDishes" class="flex items-center space-x-2">
+          <input
+            type="checkbox"
+            [checked]="isDishSelected(dish)"
+            (change)="toggleDishSelection(dish)"
+            id="dish-{{dish.id}}"
+            class="form-checkbox text-indigo-600 border-gray-300 rounded">
+          <label for="dish-{{dish.id}}" class="text-sm">{{ dish.name }}</label>
+        </div>
+      </div>
+    </div>
+
+    <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded">Save</button>
+    <a routerLink="/meal-plan" class="bg-gray-500 text-white px-4 py-2 rounded ml-2">Back</a>
+  </form>
+</div>

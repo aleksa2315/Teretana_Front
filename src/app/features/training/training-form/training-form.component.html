@@ -1,0 +1,31 @@
+<div class="container mx-auto py-8">
+  <h1 class="text-3xl font-bold mb-4" *ngIf="!isEditMode">Add New Training</h1>
+  <h1 class="text-3xl font-bold mb-4" *ngIf="isEditMode">Edit Training</h1>
+
+  <form (ngSubmit)="saveTraining()" class="space-y-4">
+    <div>
+      <label for="name" class="block text-sm font-medium mb-2">Training Name</label>
+      <input
+        type="text"
+        id="name"
+        [(ngModel)]="training.name"
+        name="name"
+        class="w-full border border-gray-300 rounded px-3 py-2"
+        required>
+    </div>
+
+    <div>
+      <label for="duration" class="block text-sm font-medium mb-2">Estimated Duration</label>
+      <input
+        type="text"
+        id="duration"
+        [(ngModel)]="training.estimatedDuration"
+        name="estimatedDuration"
+        class="w-full border border-gray-300 rounded px-3 py-2"
+        required>
+    </div>
+
+    <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded">Save</button>
+    <a routerLink="/training" class="bg-gray-500 text-white px-4 py-2 rounded ml-2">Back</a>
+  </form>
+</div>
