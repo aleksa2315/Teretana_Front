@@ -7,7 +7,7 @@ import { Dish } from '../models/dish.model';
   providedIn: 'root'
 })
 export class DishService {
-  private apiUrl = 'http://localhost:8080/api/dishes';
+  private apiUrl = 'https://teretana-back.onrender.com/api/dishes';
 
   constructor(private http: HttpClient) { }
 
