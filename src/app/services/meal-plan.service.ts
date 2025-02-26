@@ -7,7 +7,7 @@ import { MealPlan } from '../models/meal-plan.model';
   providedIn: 'root'
 })
 export class MealPlanService {
-  private baseUrl = 'http://localhost:8080/api/meal-plans';
+  private baseUrl = 'https://teretana-back.onrender.com/api/meal-plans';
 
   constructor(private http: HttpClient) {}
 
