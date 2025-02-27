@@ -7,27 +7,27 @@ import { Training } from '../models/training.model';
   providedIn: 'root'
 })
 export class TrainingService {
-  private baseUrl = 'https://teretana-back.onrender.com/api/trainings';
+  private apiUrl = '/api/trainings';
 
   constructor(private http: HttpClient) {}
 
   getAll(): Observable<Training[]> {
-    return this.http.get<Training[]>(this.baseUrl);
+    return this.http.get<Training[]>(this.apiUrl);
   }
 
   getById(id: number): Observable<Training> {
-    return this.http.get<Training>(`${this.baseUrl}/${id}`);
+    return this.http.get<Training>(`${this.apiUrl}/${id}`);
   }
 
   create(training: Training): Observable<Training> {
-    return this.http.post<Training>(this.baseUrl, training);
+    return this.http.post<Training>(this.apiUrl, training);
   }
 
   update(id: number, training: Training): Observable<Training> {
-    return this.http.put<Training>(`${this.baseUrl}/${id}`, training);
+    return this.http.put<Training>(`${this.apiUrl}/${id}`, training);
   }
 
   delete(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.baseUrl}/${id}`);
+    return this.http.delete<void>(`${this.apiUrl}/${id}`);
   }
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Training } from 'src/app/models/training.model';
 import { TrainingService } from 'src/app/services/training.service';
+import { Training } from 'src/app/models/training.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-training-list',
@@ -9,7 +10,7 @@ import { TrainingService } from 'src/app/services/training.service';
 export class TrainingListComponent implements OnInit {
   trainings: Training[] = [];
 
-  constructor(private trainingService: TrainingService) {}
+  constructor(private trainingService: TrainingService, private router: Router) {}
 
   ngOnInit(): void {
     this.loadTrainings();
@@ -22,8 +23,18 @@ export class TrainingListComponent implements OnInit {
   }
 
   deleteTraining(id: number) {
-    this.trainingService.delete(id).subscribe(() => {
-      this.loadTrainings();
-    });
+    if (confirm('Da li ste sigurni da želite da obrišete ovaj trening?')) {
+      this.trainingService.delete(id).subscribe(() => {
+        this.loadTrainings();
+      });
+    }
+  }
+
+  addTraining() {
+    this.router.navigate(['/training/create']);
+  }
+
+  editTraining(id: number) {
+    this.router.navigate(['/training', id]);
   }
 }

@@ -1,10 +1,11 @@
 <div class="container mx-auto py-8">
-  <h1 class="text-3xl font-bold mb-4" *ngIf="!isEditMode">Add New Training</h1>
-  <h1 class="text-3xl font-bold mb-4" *ngIf="isEditMode">Edit Training</h1>
+  <h1 class="text-3xl font-bold mb-4" *ngIf="!isEditMode">Dodaj Novi Trening</h1>
+  <h1 class="text-3xl font-bold mb-4" *ngIf="isEditMode">Izmeni Trening</h1>
 
   <form (ngSubmit)="saveTraining()" class="space-y-4">
+    <!-- Naziv Treninga -->
     <div>
-      <label for="name" class="block text-sm font-medium mb-2">Training Name</label>
+      <label for="name" class="block text-sm font-medium mb-2">Naziv Treninga</label>
       <input
         type="text"
         id="name"
@@ -14,18 +15,77 @@
         required>
     </div>
 
+    <!-- Opis Treninga -->
     <div>
-      <label for="duration" class="block text-sm font-medium mb-2">Estimated Duration</label>
-      <input
-        type="text"
-        id="duration"
-        [(ngModel)]="training.estimatedDuration"
-        name="estimatedDuration"
+      <label for="description" class="block text-sm font-medium mb-2">Opis Treninga</label>
+      <textarea
+        id="description"
+        [(ngModel)]="training.description"
+        name="description"
         class="w-full border border-gray-300 rounded px-3 py-2"
-        required>
+      ></textarea>
     </div>
 
-    <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded">Save</button>
-    <a routerLink="/training" class="bg-gray-500 text-white px-4 py-2 rounded ml-2">Back</a>
+    <!-- Pretraga Vežbi -->
+    <div class="mb-4">
+      <input
+        type="text"
+        [(ngModel)]="searchTermEx"
+        (input)="searchExercises()"
+        placeholder="Pretraži vežbe..."
+        class="w-full border border-gray-300 rounded px-3 py-2"
+        name="searchTermEx">
+    </div>
+
+    <!-- Paginacija Vežbi -->
+    <div class="flex justify-between items-center mb-4">
+      <button
+        type="button"
+        (click)="goToExercisePage(currentPageEx - 1)"
+        class="bg-gray-500 text-white px-4 py-2 rounded"
+        [disabled]="currentPageEx === 0">
+        Prethodna
+      </button>
+      <span>Strana {{ currentPageEx + 1 }}</span>
+      <button
+        type="button"
+        (click)="goToExercisePage(currentPageEx + 1)"
+        class="bg-gray-500 text-white px-4 py-2 rounded">
+        Sledeća
+      </button>
+    </div>
+
+    <!-- Lista Dostupnih Vežbi -->
+    <h2 class="text-xl font-semibold mb-2">Dostupne Vežbe</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div *ngFor="let exercise of availableExercises" class="border p-4 rounded shadow-sm">
+        <p class="font-medium mb-2">{{ exercise.name }}</p>
+        <p class="text-sm italic mb-2">{{ exercise.note }}</p>
+        <div class="mb-2">
+          <label class="block text-sm font-medium">Broj Serija</label>
+          <input
+            type="number"
+            [(ngModel)]="exerciseData[exercise.id].sets"
+            name="sets{{exercise.id}}"
+            class="w-full border border-gray-300 rounded px-3 py-1"
+            min="0">
+        </div>
+        <div>
+          <label class="block text-sm font-medium">Broj Ponavljanja</label>
+          <input
+            type="number"
+            [(ngModel)]="exerciseData[exercise.id].reps"
+            name="reps{{exercise.id}}"
+            class="w-full border border-gray-300 rounded px-3 py-1"
+            min="0">
+        </div>
+      </div>
+    </div>
+
+    <!-- Dugmad -->
+    <div class="mt-4">
+      <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded">Sačuvaj</button>
+      <a routerLink="/training" class="bg-gray-500 text-white px-4 py-2 rounded ml-2">Nazad</a>
+    </div>
   </form>
 </div>
