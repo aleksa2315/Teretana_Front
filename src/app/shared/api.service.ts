@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ApiService {
-  private apiUrl = 'https://teretana-back.onrender.com:8080';
+  private apiUrl = 'https://teretana-back.onrender.com';
 
   constructor(private http: HttpClient) {}
 
