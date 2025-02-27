@@ -8,7 +8,7 @@ import { ExerciseService } from 'src/app/services/exercise.service';
   templateUrl: './exercise-form.component.html'
 })
 export class ExerciseFormComponent implements OnInit {
-  exercise: Exercise = { name: '', sets: 0, repetitions: 0 };
+  exercise: Exercise = { name: '', note: '' };
   isEditMode = false;
 
   constructor(

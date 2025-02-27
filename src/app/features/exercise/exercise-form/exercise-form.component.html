@@ -1,10 +1,10 @@
 <div class="container mx-auto py-8">
-  <h1 class="text-3xl font-bold mb-4" *ngIf="!isEditMode">Add New Exercise</h1>
-  <h1 class="text-3xl font-bold mb-4" *ngIf="isEditMode">Edit Exercise</h1>
+  <h1 class="text-3xl font-bold mb-4" *ngIf="!isEditMode">Dodaj Novu Vežbu</h1>
+  <h1 class="text-3xl font-bold mb-4" *ngIf="isEditMode">Izmeni Vežbu</h1>
 
   <form (ngSubmit)="saveExercise()" class="space-y-4">
     <div>
-      <label for="name" class="block text-sm font-medium mb-2">Exercise Name</label>
+      <label for="name" class="block text-sm font-medium mb-2">Naziv Vežbe</label>
       <input
         type="text"
         id="name"
@@ -15,28 +15,16 @@
     </div>
 
     <div>
-      <label for="sets" class="block text-sm font-medium mb-2">Sets</label>
-      <input
-        type="number"
-        id="sets"
-        [(ngModel)]="exercise.sets"
-        name="sets"
+      <label for="note" class="block text-sm font-medium mb-2">Napomena</label>
+      <textarea
+        id="note"
+        [(ngModel)]="exercise.note"
+        name="note"
         class="w-full border border-gray-300 rounded px-3 py-2"
-        required>
+      ></textarea>
     </div>
 
-    <div>
-      <label for="repetitions" class="block text-sm font-medium mb-2">Repetitions</label>
-      <input
-        type="number"
-        id="repetitions"
-        [(ngModel)]="exercise.repetitions"
-        name="repetitions"
-        class="w-full border border-gray-300 rounded px-3 py-2"
-        required>
-    </div>
-
-    <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded">Save</button>
-    <a routerLink="/exercise" class="bg-gray-500 text-white px-4 py-2 rounded ml-2">Back</a>
+    <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded">Sačuvaj</button>
+    <a routerLink="/exercise" class="bg-gray-500 text-white px-4 py-2 rounded ml-2">Nazad</a>
   </form>
 </div>
