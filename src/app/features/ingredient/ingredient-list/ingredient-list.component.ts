@@ -1,14 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import {Ingredient} from "../../../models/ingredient.model";
-import {IngredientService} from "../../../services/ingredient.service";
+import { Ingredient } from '../../../models/ingredient.model';
+import { IngredientService } from '../../../services/ingredient.service';
 
 @Component({
   selector: 'app-ingredient-list',
-  templateUrl: './ingredient-list.component.html'
+  templateUrl: './ingredient-list.component.html',
 })
 export class IngredientListComponent implements OnInit {
   ingredients: Ingredient[] = [];
+  searchTerm: string = '';
 
   constructor(private ingredientService: IngredientService, private router: Router) {}
 
@@ -17,10 +18,11 @@ export class IngredientListComponent implements OnInit {
   }
 
   loadIngredients() {
-    this.ingredientService.getAll().subscribe(data => {
-      this.ingredients = data;
+    this.ingredientService.getAll(0, 10, this.searchTerm).subscribe((data) => {
+      this.ingredients = data.content;
     });
   }
+
 
   deleteIngredient(id: number) {
     if (confirm('Da li ste sigurni da želite da obrišete ovaj sastojak?')) {

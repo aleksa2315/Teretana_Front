@@ -12,7 +12,7 @@ import { AuthInterceptor } from './auth/auth-interceptor.service';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule,
+    HttpClientModule
   ],
   providers: [
     {

@@ -46,6 +46,14 @@
       </a>
       <a
         *ngIf="isLoggedIn"
+        routerLink="/ingredient"
+        routerLinkActive="bg-gray-700"
+        class="block px-4 py-2 rounded hover:bg-gray-600"
+      >
+        Ingredients
+      </a>
+      <a
+        *ngIf="isLoggedIn"
         routerLink="/exercise"
         routerLinkActive="bg-gray-700"
         class="block px-4 py-2 rounded hover:bg-gray-600"

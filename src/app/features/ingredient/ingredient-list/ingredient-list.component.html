@@ -1,22 +1,46 @@
-<div class="container mx-auto py-8">
-  <h1 class="text-3xl font-bold mb-4">Sastojci</h1>
-  <button (click)="addIngredient()" class="bg-blue-500 text-white px-4 py-2 rounded mb-4">Dodaj Sastojak</button>
+<div class="max-w-3xl mx-auto p-6 bg-white shadow-md rounded-lg">
+  <h1 class="text-2xl font-semibold mb-6 text-gray-700">Sastojci</h1>
 
-  <table class="w-full table-auto border-collapse border border-gray-300">
-    <thead>
-    <tr class="bg-gray-100">
-      <th class="border border-gray-300 px-4 py-2">Naziv</th>
-      <th class="border border-gray-300 px-4 py-2">Akcije</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr *ngFor="let ingredient of ingredients" class="hover:bg-gray-50">
-      <td class="border border-gray-300 px-4 py-2">{{ ingredient.name }}</td>
-      <td class="border border-gray-300 px-4 py-2 flex gap-2">
-        <button (click)="editIngredient(ingredient.id)" class="bg-yellow-500 text-white px-2 py-1 rounded">Izmeni</button>
-        <button (click)="deleteIngredient(ingredient.id)" class="bg-red-500 text-white px-2 py-1 rounded">Obriši</button>
-      </td>
-    </tr>
-    </tbody>
-  </table>
+  <div class="flex justify-between items-center mb-4">
+    <input
+      type="text"
+      [(ngModel)]="searchTerm"
+      (input)="loadIngredients()"
+      placeholder="Pretraži sastojke..."
+      class="border border-gray-300 rounded px-3 py-2 w-full max-w-sm"
+    />
+    <button (click)="addIngredient()" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg shadow">
+      + Dodaj Sastojak
+    </button>
+  </div>
+
+  <div class="overflow-x-auto">
+    <table class="w-full border border-gray-300 rounded-lg shadow-md">
+      <thead class="bg-gray-200">
+      <tr>
+        <th class="border border-gray-300 px-4 py-2 text-left">Naziv</th>
+        <th class="border border-gray-300 px-4 py-2 text-center">Akcije</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let ingredient of ingredients" class="hover:bg-gray-50">
+        <td class="border border-gray-300 px-4 py-2">{{ ingredient.name }}</td>
+        <td class="border border-gray-300 px-4 py-2 flex justify-center gap-2">
+          <button
+            (click)="editIngredient(ingredient.id)"
+            class="bg-yellow-500 hover:bg-yellow-600 text-white px-3 py-1 rounded-lg shadow"
+          >
+            Izmeni
+          </button>
+          <button
+            (click)="deleteIngredient(ingredient.id)"
+            class="bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded-lg shadow"
+          >
+            Obriši
+          </button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
