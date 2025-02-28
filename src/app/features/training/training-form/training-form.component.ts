@@ -45,16 +45,15 @@ export class TrainingFormComponent implements OnInit {
   }
 
   loadExercises() {
-    this.exerciseService.getAll(this.currentPageEx, this.pageSizeEx, this.searchTermEx)
-      .subscribe(data => {
-        this.availableExercises = data.content;
-        // Inicijalizuj exerciseData za svaku vežbu ako već nije postavljeno
-        this.availableExercises.forEach(e => {
-          if (e.id !== undefined && !this.exerciseData[e.id]) {
-            this.exerciseData[e.id] = { sets: 0, reps: 0 };
-          }
-        });
+     this.exerciseService.getAll(this.currentPageEx, this.pageSizeEx, this.searchTermEx)
+        .subscribe(data => {
+         this.availableExercises = data.content;
+     this.availableExercises.forEach(e => {
+        if (e.id !== undefined && !this.exerciseData[e.id]) {
+          this.exerciseData[e.id] = { sets: 0, reps: 0 };
+        }
       });
+    });
   }
 
   searchExercises() {
