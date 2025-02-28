@@ -7,7 +7,7 @@ import { Training } from '../models/training.model';
   providedIn: 'root'
 })
 export class TrainingService {
-  private apiUrl = 'teretanaback-production.up.railway.app/api/trainings';
+  private apiUrl = 'https://teretanaback-production.up.railway.app/api/trainings';
 
   constructor(private http: HttpClient) {}
 
