@@ -16,8 +16,8 @@ export class ExerciseListComponent implements OnInit {
   }
 
   loadExercises() {
-    this.exerciseService.getAll().subscribe(data => {
-      this.exercises = data;
+    this.exerciseService.getAll(0, 100, '').subscribe(data => {
+      this.exercises = data.content;
     });
   }
 
