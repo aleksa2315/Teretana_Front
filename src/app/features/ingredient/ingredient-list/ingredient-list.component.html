@@ -26,18 +26,18 @@
       <tr *ngFor="let ingredient of ingredients" class="hover:bg-gray-50">
         <td class="border border-gray-300 px-4 py-2">{{ ingredient.name }}</td>
         <td class="border border-gray-300 px-4 py-2 flex justify-center gap-2">
-          <button
-            (click)="editIngredient(ingredient.id)"
-            class="bg-yellow-500 hover:bg-yellow-600 text-white px-3 py-1 rounded-lg shadow"
-          >
-            Izmeni
-          </button>
-          <button
-            (click)="deleteIngredient(ingredient.id)"
-            class="bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded-lg shadow"
-          >
-            Obriši
-          </button>
+            <button
+        (click)="editIngredient(ingredient.id ?? 0)"
+        class="bg-yellow-500 hover:bg-yellow-600 text-white px-3 py-1 rounded-lg shadow"
+      >
+        Izmeni
+      </button>
+      <button
+        (click)="deleteIngredient(ingredient.id ?? 0)"
+        class="bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded-lg shadow"
+      >
+        Obriši
+      </button>
         </td>
       </tr>
       </tbody>
