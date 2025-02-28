@@ -7,7 +7,7 @@ import { Exercise } from '../models/exercise.model';
   providedIn: 'root'
 })
 export class ExerciseService {
-  private baseUrl = 'teretanaback-production.up.railway.app/api/exercises';
+  private baseUrl = 'https://teretanaback-production.up.railway.app/api/exercises';
 
   constructor(private http: HttpClient) {}
 
