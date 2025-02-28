@@ -67,13 +67,17 @@ export class DishFormComponent implements OnInit {
 
   // Dodavanje sastojaka u jelo
   addIngredient(ingredient: Ingredient) {
-    this.ingredientWeights[ingredient.id] = this.ingredientWeights[ingredient.id] || 100;
-  }
+  if (ingredient.id === undefined) return; // Proveravamo da li postoji ID
+  this.ingredientWeights[ingredient.id] = this.ingredientWeights[ingredient.id] || 100;
+}
+
 
   // Uklanjanje sastojaka iz jela
-  removeIngredient(ingredientId: number) {
-    delete this.ingredientWeights[ingredientId];
-  }
+  removeIngredient(ingredientId?: number) {
+  if (ingredientId === undefined) return;
+  delete this.ingredientWeights[ingredientId];
+}
+
 
   // Čuvanje jela
   saveDish() {
