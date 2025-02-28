@@ -33,7 +33,7 @@ export class AuthGuard implements CanActivate {
       alert('Access denied: insufficient permissions');
     }
 
-    this.router.navigate(['/auth/login']);
+    this.router.navigate(['/users']);
     return false;
   }
 
