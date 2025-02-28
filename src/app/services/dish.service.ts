@@ -7,7 +7,7 @@ import { Dish } from '../models/dish.model';
   providedIn: 'root'
 })
 export class DishService {
-  private apiUrl = 'teretanaback-production.up.railway.app/api/dishes';
+  private apiUrl = 'https://teretanaback-production.up.railway.app/api/dishes';
 
   constructor(private http: HttpClient) { }
 
