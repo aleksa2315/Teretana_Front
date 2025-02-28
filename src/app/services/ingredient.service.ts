@@ -7,7 +7,7 @@ import {Ingredient} from "../models/ingredient.model";
   providedIn: 'root'
 })
 export class IngredientService {
-  private apiUrl = 'https://teretana-back.onrender.com/api/ingredients';
+  private apiUrl = 'teretanaback-production.up.railway.app/api/ingredients';
 
   constructor(private http: HttpClient) { }
 
