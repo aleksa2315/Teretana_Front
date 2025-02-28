@@ -24,19 +24,21 @@ export class IngredientListComponent implements OnInit {
   }
 
 
-  deleteIngredient(id: number) {
-    if (confirm('Da li ste sigurni da želite da obrišete ovaj sastojak?')) {
-      this.ingredientService.delete(id).subscribe(() => {
-        this.loadIngredients();
-      });
-    }
+  deleteIngredient(id?: number) {
+  if (id === undefined) return; // Ako je undefined, ne radi ništa
+  if (confirm('Da li ste sigurni da želite da obrišete ovaj sastojak?')) {
+    this.ingredientService.delete(id).subscribe(() => {
+      this.loadIngredients();
+    });
   }
+}
+
+editIngredient(id?: number) {
+  if (id === undefined) return; // Ako je undefined, ne radi ništa
+  this.router.navigate(['/ingredient', id]);
+}
 
   addIngredient() {
     this.router.navigate(['/ingredient/create']);
   }
 
-  editIngredient(id: number) {
-    this.router.navigate(['/ingredient', id]);
-  }
-}
