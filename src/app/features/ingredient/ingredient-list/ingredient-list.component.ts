@@ -41,4 +41,4 @@ editIngredient(id?: number) {
   addIngredient() {
     this.router.navigate(['/ingredient/create']);
   }
-
+}
