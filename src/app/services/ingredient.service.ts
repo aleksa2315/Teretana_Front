@@ -25,8 +25,11 @@ export class IngredientService {
   }
 
   create(ingredient: Ingredient): Observable<Ingredient> {
-    return this.http.post<Ingredient>(this.apiUrl, ingredient);
-  }
+  const token = localStorage.getItem('token');  // Uveri se da token postoji
+  const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+
+  return this.http.post<Ingredient>(this.apiUrl, ingredient, { headers });
+}
 
   update(id: number, ingredient: Ingredient): Observable<Ingredient> {
     return this.http.put<Ingredient>(`${this.apiUrl}/${id}`, ingredient);
