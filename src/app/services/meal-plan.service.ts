@@ -20,7 +20,11 @@ export class MealPlanService {
   }
 
   create(mealPlan: MealPlan): Observable<MealPlan> {
-    return this.http.post<MealPlan>(this.baseUrl, mealPlan);
+    const formattedMealPlan = {
+      name: mealPlan.name,
+      dishes: mealPlan.dishes.map(dish => dish.id) // Ensure only dish IDs are sent
+    };
+    return this.http.post<MealPlan>(this.baseUrl, formattedMealPlan);
   }
 
   update(id: number, mealPlan: MealPlan): Observable<MealPlan> {
