@@ -8,7 +8,7 @@ import { IngredientService } from '../../../services/ingredient.service';
   templateUrl: './ingredient-form.component.html',
 })
 export class IngredientFormComponent implements OnInit {
-  ingredient: Ingredient = { id: 0, name: '' };
+  ingredient: Ingredient = { name: '' };
   isEditMode = false;
 
   constructor(
